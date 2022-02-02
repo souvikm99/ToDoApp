@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>To Do List!</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script src="script.js"></script>
+
+<div class="container">
+	
+	<div class="submit">
+		<input id="myInput" name="yo" placeholder="Enter your text..." required>
+		<button id="save" onclick="yo()">Save</button>
+	</div>
+
+	<div class="entries" id="entries">
+
+	</div>
+	<input type="checkbox" id="allChk" onclick="selectall(this)">
+	<button onclick="MulDele()">delete</button>
+</div>
+
+
+<script>
+//This enter keypress event only working when the script is written
+//in the same page with the html, not in a external file.
+
+var input = document.getElementById("myInput");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("save").click();
+  }
+});
+let flag = 0;
+function yo(){
+	flag += 1;
+	//console.log(flag);
+	x = document.getElementById("myInput").value;
+	//console.log(x);
+	document.getElementById("entries").innerHTML +=
+	"<div class='child' id='a"+flag+"'>"+x+
+	"<div class='delete' name='"+flag+"'onclick='del(this.parentElement.id)'>x</div><input type='checkbox' id='"+flag+
+	"' name='foo' class='box'></div>";
+	document.getElementById("myInput").value = "";
+}
+
+function del(d_it){
+	//alert(d_it);
+	document.getElementById(d_it).style.cssText="display:none;";
+}
+
+function MulDele(){
+
+	
+	for (i=1; i<=flag; i++){
+		//console.log(i);
+		if(document.getElementById(i).checked)
+		{
+			//console.log(document.getElementById(i).value);
+			
+			//let val = document.getElementById(i).value;
+			let mal = 'a'+i;
+			document.getElementById(mal).style.cssText="display:none;";
+		}
+		//var checkedValue = document.querySelector('.box:checked').value;
+		//console.log(checkedValue);>
+		
+		//document.getElementById(checkedValue).style.cssText="display:none;";
+	}
+	document.getElementById("allChk").checked = false;
+}
+
+function selectall(source) {
+  checkboxes = document.getElementsByName('foo');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+</script>
+</body>
+</html>

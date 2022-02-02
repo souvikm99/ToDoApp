@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <input type="text" id="fname" name="fname">
+        <button onclick="Yo()">submit</button>
+        <div class="menu">
+            <input type="checkbox" id="allChk" onClick="toggle(this)">
+            <button onclick="mul()">delete</button>
+        </div>
+        <div class="menu2" id="menu2">
+            <!--<div class="child" id="child">
+                <div class="text" ></div>
+                <div class="remove" onclick="del(this.parentElement.id)"></div>
+            </div>-->
+        </div>
+        <script>
+
+            var flag = 0;
+            function Yo(){
+
+            let x = document.getElementById("fname").value;
+            if(x===""){
+                alert("it's empty");
+            }
+            else{
+                flag += 1;
+                document.getElementById("menu2").innerHTML +=
+                '<div class="child" id="child'+flag+'"><div class="text" >'+x
+                    +'</div><div class="remove" onclick="del(this.parentElement.id)"></div><input type="checkbox" name="foo" id="'+flag+
+                    '"></div>'
+                document.getElementById("fname").value = "";
+            }
+            }
+
+            function del(z){
+                console.log(z)
+                document.getElementById(z).style.cssText="display:none;";          
+            }
+
+            function mul(){
+                for (i=1; i<=flag; i++){
+                if(document.getElementById(i).checked)
+                {
+                    let mal = 'child'+i;
+                    document.getElementById(mal).style.cssText="display:none;";
+                }
+            }
+            document.getElementById("allChk").checked = false;
+            }  
+
+            function toggle(source) {
+                checkboxes = document.getElementsByName('foo');
+                    for(var i=0, n=checkboxes.length;i<n;i++) {
+                        checkboxes[i].checked = source.checked;
+                    }
+                }
+
+        </script>
+
+        <style>
+            .menu{
+                display:flex;
+                width: 250px;
+                border: 1px solid black;
+                justify-content: baseline;
+            }
+            .menu2{
+                height: 800px;
+                width: 250px;
+                border: 1px solid black;
+            }
+            .child{
+                display: inline-flex;
+                width:200px;
+                height: 50px;
+                border: 1px solid black;
+            }
+            .text{
+                width: 180px;
+                height: 30px;
+                border: 1px solid red;
+            }
+            .remove{
+                height: 20px;
+                width: 20px;
+                background: red;
+                border-radius: 50px;
+                cursor: pointer;
+            }
+        </style>
+    </body>
+</html>

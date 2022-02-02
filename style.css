@@ -1,0 +1,102 @@
+.container {
+	position: relative;
+	display: flex;
+	flex-flow: column wrap;
+	height:550px;
+	width:500px;
+	background: rgba(107, 107, 107, 0.1);
+	margin:0 auto;
+	border: 1.5px solid rgba(107, 107, 107, 0.4);
+	border-radius:10px;
+	align-items: center;
+}
+.submit{
+	position:absolute;
+	display: flex;
+	margin: 50px auto;
+	width:80%;
+	align-items: center;
+
+}
+
+#myInput{
+	width:85%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+}
+
+#save{
+	width:15%;
+	border-radius:4px;
+    outline:none;
+    padding:8px;
+}
+
+input[type=text]:focus{
+    border-color:dodgerBlue;
+    box-shadow:0 0 8px 0 dodgerBlue;
+}
+
+.entries{
+	position:absolute;
+
+	height:75%;
+	width:80%;
+	margin: 100px auto;
+	border: 0.5px solid rgba(107, 107, 107, 0.4);
+	border-radius:10px;
+	align-items:center;
+	overflow-x: hidden;
+	overflow-y:scroll;
+}
+.entries::-webkit-scrollbar-track
+{
+	display:none;
+}
+
+.entries::-webkit-scrollbar
+{
+	width: 2px;
+	background-color: #F5F5F5;
+}
+
+.entries::-webkit-scrollbar-thumb
+{
+
+	background-color: #000000;
+	border: 2px solid #555555;
+}
+
+.child{
+	position:relative;
+	
+	border-radius:5px;
+	height:28px;
+	width:95%;
+	background:#535353 ;
+	margin: 5px auto;
+	padding: 7px 0px 0px 10px;
+	color:white;
+}
+
+.delete{
+		right:0;
+		top:0;
+		position:absolute;
+		cursor:pointer;
+		height:15px;
+		width: 15px;
+		background:red;
+		text-align:center;	
+		border-radius:50px;
+}
+
+.box{
+	position:absolute;
+	right:0;
+	bottom:0;
+}
